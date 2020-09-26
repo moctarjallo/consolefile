@@ -1,12 +1,15 @@
-class File:
+from .endpoint import Endpoint
+
+class File(Endpoint):
 
     def __init__(self, filename, title='DATABASE'):
         self.filename = filename
-        self.file = open(filename, mode='w+')
-        self.file.write(f"--------------{filename.upper()} {title}--------------\n\n")
-        self.file.close()
+        # self.file = open(filename, mode='w+')
+        # self.file.write(f"--------------{filename.upper()} {title}--------------\n")
+        # self.file.close()
 
-    def read(self):
+    def read(self, variable):
+        self.write('\n\n')
         with open(self.filename, 'r') as f:
             return f.readlines()
             
@@ -18,16 +21,22 @@ if __name__ == '__main__':
     f = File('./draft.txt')
     data = """FIRSTNAME : Moctar
 LASTNAME : Diallo
-ADDRESS : Medina
+ADDRESS : 
+\tCITY: Medina
 BALANCE : 400
 CODE : 5221
 
 FIRSTNAME : Amadou
 LASTNAME : Ba
-ADDRESS : Dakar
+ADDRESS : 
+\tCITY: Dakar
 BALANCE : 800
 CODE : 9921
 
 """
-    f.write(data)
-    print(f.read())
+    # f.write(data)
+    data = f.read()
+    # print(f"readlines:{data}")
+    import pythonapi as api
+    req = api.TextRequest(data)
+    print(req.data)
