@@ -7,7 +7,7 @@ class TestWrite(unittest.TestCase):
         with open('./tests/test_writer.txt', 'w') as f:
             pass
 
-    @unittest.skip('asks user input')
+    # @unittest.skip('asks user input')
     def test_console_endpoint(self):
         writer = cf.Writer('console')
         writer.write('Name ')

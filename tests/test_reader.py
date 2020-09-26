@@ -3,7 +3,7 @@ import unittest
 import consolefile as cf
 
 class TestRead(unittest.TestCase):
-    @unittest.skip('asks user input')
+    # @unittest.skip('asks user input')
     def test_console_endpoint(self):
         reader = cf.Reader('console')
         variable = reader.read('Name ')
