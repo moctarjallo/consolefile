@@ -6,8 +6,9 @@ class TestRead(unittest.TestCase):
     # @unittest.skip('asks user input')
     def test_console_endpoint(self):
         reader = cf.Reader('console')
-        variable = reader.read('Name ')
-        self.assertIsInstance(variable, str)
+        data = reader.read('Name ')
+        self.assertIn('Name ', data.keys())
+        self.assertIsInstance(data['Name '], str)
 
     def test_file_endpoint(self):
         with open('./tests/test_reader.txt', 'w') as f:
