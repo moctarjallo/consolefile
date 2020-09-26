@@ -7,8 +7,8 @@ class TestRead(unittest.TestCase):
     def test_console_endpoint(self):
         reader = cf.Reader('console')
         data = reader.read('Name ')
-        self.assertIn('Name ', data.keys())
-        self.assertIsInstance(data['Name '], str)
+        self.assertEqual(data[0], 'Name ')
+        self.assertIsInstance(data[1], str)
 
     def test_file_endpoint(self):
         with open('./tests/test_reader.txt', 'w') as f:

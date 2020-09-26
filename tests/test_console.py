@@ -7,14 +7,14 @@ class TestRead(unittest.TestCase):
     def test_simple(self):
         console = Console()
         data = console.read('name')
-        self.assertIn('name', data.keys())
-        self.assertIsInstance(data['name'], str)
+        self.assertEqual(data[0], 'name')
+        self.assertIsInstance(data[1], str)
 
     def test_varibale_name_not_in_keys(self):
         console = Console()
         data = console.read('name')
-        self.assertIsInstance(data['name'], str)
-        self.assertNotIn('Name', data.keys())
+        self.assertNotEqual(data[0], 'Name')
+        self.assertIsInstance(data[1], str)
 
 class TestWrite(unittest.TestCase):
     # @unittest.skip("prints 'Hello World' successfully")
