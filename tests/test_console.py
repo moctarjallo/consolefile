@@ -10,6 +10,12 @@ class TestRead(unittest.TestCase):
         self.assertEqual(data[0], 'name')
         self.assertIsInstance(data[1], str)
 
+    def test_int_input(self):
+        console = Console()
+        data = console.read('age')
+        self.assertEqual(data[0], 'age')
+        self.assertIsInstance(data[1], int)
+
     def test_varibale_name_not_in_keys(self):
         console = Console()
         data = console.read('name')
